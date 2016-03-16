@@ -42,28 +42,25 @@ public class ContatoDao {
 	
 	public Contato getContato(Long id) {
 		Contato contato = new Contato();
-		PreparedStatement stmt = null;
 		try {
-			stmt = this.connection
-					.prepareStatement("select * from contatos where id = ?");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+			PreparedStatement stmt = this.connection.prepareStatement("select * from contatos where id = ?");
 			stmt.setLong(1, id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			ResultSet rs = stmt.executeQuery();
+
+			contato.setId(rs.getLong("id"));
+			contato.setNome(rs.getString("nome"));
+			contato.setEmail(rs.getString("email"));
+			contato.setEndereco(rs.getString("endereco"));
+
+			Calendar data = Calendar.getInstance();
+			data.setTime(rs.getDate("dataNascimento"));
+			contato.setDataNascimento(data);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		return contato;
+
 	}
 	
 	public List<Contato> getLista() {
