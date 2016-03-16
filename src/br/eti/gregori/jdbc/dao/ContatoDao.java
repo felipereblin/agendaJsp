@@ -42,7 +42,7 @@ public class ContatoDao {
 	
 	public Contato getContato(Long id) {
 		Contato contato = new Contato();
-		PreparedStatement stmt;
+		PreparedStatement stmt = null;
 		try {
 			stmt = this.connection
 					.prepareStatement("select * from contatos where id = ?");
@@ -50,8 +50,18 @@ public class ContatoDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		stmt.setLong(1, id);
-		ResultSet rs = stmt.executeQuery();
+		try {
+			stmt.setLong(1, id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			ResultSet rs = stmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return contato;
 	}

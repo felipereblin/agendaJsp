@@ -21,7 +21,7 @@ public class FrontController extends HttpServlet {
 			request.getRequestDispatcher(view).forward(request, response);
 
 		} catch (Exception e) {
-			throw new ServletException("Falha na execuÃ§Ã£o da action.", e);
+			throw new ServletException("Falha na execução da action.", e);
 		}
 		
 	}
