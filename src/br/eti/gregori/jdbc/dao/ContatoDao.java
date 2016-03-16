@@ -40,6 +40,22 @@ public class ContatoDao {
 		}
 	}
 	
+	public Contato getContato(Long id) {
+		Contato contato = new Contato();
+		PreparedStatement stmt;
+		try {
+			stmt = this.connection
+					.prepareStatement("select * from contatos where id = ?");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		stmt.setLong(1, id);
+		ResultSet rs = stmt.executeQuery();
+		
+		return contato;
+	}
+	
 	public List<Contato> getLista() {
 		try {
 			List<Contato> contatos = new ArrayList<Contato>();
