@@ -10,7 +10,7 @@ import br.eti.gregori.action.Action;
 import br.eti.gregori.action.ActionFactory;
 
 @SuppressWarnings("serial")
-@WebServlet("index")
+@WebServlet("/index")
 public class FrontController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
@@ -18,12 +18,8 @@ public class FrontController extends HttpServlet {
 		Action action = ActionFactory.getAction(request);
 		try {
 			String view = action.execute(request, response);
-			if (view.equals(request.getPathInfo().substring(1))) {
-				request.getRequestDispatcher("/WEB-INF/jsp/" + view + ".jsp")
-					.forward(request, response);
-			} else {
-				response.sendRedirect(view);
-			}
+			request.getRequestDispatcher(view).forward(request, response);
+
 		} catch (Exception e) {
 			throw new ServletException("Falha na execução da action.", e);
 		}

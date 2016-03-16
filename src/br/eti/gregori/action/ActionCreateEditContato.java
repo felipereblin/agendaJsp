@@ -41,14 +41,14 @@ public class ActionCreateEditContato implements Action {
 			contato.setId(id);
 			dao.altera(contato);
 			
-			request.setAttribute("acaoContato", "alterado");
+			request.setAttribute("mensagem", "Contato alterado com sucesso.");
 			
 		} else {
 			dao.adiciona(contato);
-			request.setAttribute("acaoContato", "criado");
+			request.setAttribute("mensagem", "Contato criado com sucesso");
 		}
 		
-		return "contato-editado";
+		return "index?action=ActionListaContatos";
 	}
 
 }

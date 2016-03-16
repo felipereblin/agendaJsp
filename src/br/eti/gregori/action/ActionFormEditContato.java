@@ -6,22 +6,19 @@ import javax.servlet.http.HttpServletResponse;
 import br.eti.gregori.jdbc.dao.ContatoDao;
 import br.eti.gregori.jdbc.modelo.Contato;
 
-public class ActionRemoveContato implements Action {
+public class ActionFormEditContato implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Long id = Long.parseLong(request.getParameter("id"));
-		Contato contato = new Contato();
-		contato.setId(id);
+		long id = Long.parseLong(request.getParameter("id"));
 		
 		ContatoDao dao = new ContatoDao();
-		dao.remove(contato);
+		Contato contato = dao.getContato(id);
+		request.setAttribute("contato", contato);
 		
-		System.out.println("Excluindo contato ... ");
+		return "/WEB-INF/jsp/adiciona-contato.jsp";
 		
-		request.setAttribute("mensagem", "Contato removido com sucesso.");
 		
-		return "index?action=ActionListaContatos";
 	}
 
 }

@@ -16,7 +16,7 @@ public class ActionListaContatos implements Action {
 		
 		request.setAttribute("contatos", contatos);
 		
-		return "lista-contatos";
+		return "/WEB-INF/jsp/lista-contatos.jsp";
 	}
 
 }

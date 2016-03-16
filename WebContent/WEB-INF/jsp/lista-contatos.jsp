@@ -9,6 +9,7 @@
 <title>Lista de Contatos</title>
 </head>
 <body>
+  <h2>#${mensagem ? mensagem : ''}</h2>
   <a href="index?acao=ActionFormEditContato">Novo Contato</a>
   <table>
     <thead>
@@ -20,21 +21,22 @@
         <th colspan="2">Ações</th>
       </tr>
     </thead>
-  	<c:forEach var="contato" items="${contatos}">
-  	  <tr>
+    <c:forEach var="contato" items="${contatos}">
+  	  <tr bgcolor="#${id.count %2 == 0 ? 'aaee88' : 'ffffff' }">
   	    <td>${contato.nome}</td>
   	    <td>
-  	      <c:if test="${not empty contato.email}">
-  	        <a href="mailto:${contato.email}">${contato.email}</a>
-	      </c:if>
-	      <c:if test="${empty contato.email}">
-	        E-mail não informado
-	      </c:if>
-	    </td>
+  	      <c:choose>
+			<c:when test="${not empty contato.email}">
+  			  <a href="mailto:${contato.email}">${contato.email}</a>
+			</c:when>
+			<c:otherwise>
+			  E-mail não informado
+			</c:otherwise>
+		  </c:choose>
+		</td>
 	    <td>${contato.endereco}</td>
 	    <td>
-	    	<fmt:formatDate value="${contato.dataNascimento.time}" 
-	    		pattern="dd/MM/yyyy" />
+	      <fmt:formatDate value="${contato.dataNascimento.time}" pattern="dd/MM/yyyy" />
 	    </td>
 	    <td><a href="index?action=ActionFormEditContato&id=${contato.id}">Editar</a></td>
 	    <td><a href="index?action=ActionRemoveContato&id=${contato.id}">Remover</a></td>
