@@ -48,7 +48,7 @@ public class ActionCreateEditContato implements Action {
 			request.setAttribute("mensagem", "Contato criado com sucesso");
 		}
 		
-		return "index?action=ActionListaContatos";
+		return "controller?action=ActionListaContatos";
 	}
 
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
   <h2>#${mensagem ? mensagem : ''}</h2>
-  <a href="index?acao=ActionFormEditContato">Novo Contato</a>
+  <a href="controller?action=ActionFormEditContato">Novo Contato</a>
   <table>
     <thead>
       <tr>
@@ -38,8 +38,8 @@
 	    <td>
 	      <fmt:formatDate value="${contato.dataNascimento.time}" pattern="dd/MM/yyyy" />
 	    </td>
-	    <td><a href="index?action=ActionFormEditContato&id=${contato.id}">Editar</a></td>
-	    <td><a href="index?action=ActionRemoveContato&id=${contato.id}">Remover</a></td>
+	    <td><a href="controller?action=ActionFormEditContato&id=${contato.id}">Editar</a></td>
+	    <td><a href="controller?action=ActionRemoveContato&id=${contato.id}">Remover</a></td>
   	  </tr>
   	</c:forEach>
   </table>

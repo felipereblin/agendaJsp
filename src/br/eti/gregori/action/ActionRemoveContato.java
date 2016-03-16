@@ -21,7 +21,7 @@ public class ActionRemoveContato implements Action {
 		
 		request.setAttribute("mensagem", "Contato removido com sucesso.");
 		
-		return "index?action=ActionListaContatos";
+		return "controller?action=ActionListaContatos";
 	}
 
 }

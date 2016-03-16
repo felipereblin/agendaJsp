@@ -10,7 +10,7 @@ import br.eti.gregori.action.Action;
 import br.eti.gregori.action.ActionFactory;
 
 @SuppressWarnings("serial")
-@WebServlet("/index")
+@WebServlet("/controller")
 public class FrontController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) 
