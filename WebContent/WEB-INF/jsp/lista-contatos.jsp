@@ -9,7 +9,7 @@
 <title>Lista de Contatos</title>
 </head>
 <body>
-  <h2>#${mensagem ? mensagem : ''}</h2>
+  <h2>${mensagem}</h2>
   <a href="controller?action=ActionFormEditContato">Novo Contato</a>
   <table>
     <thead>
@@ -21,7 +21,7 @@
         <th colspan="2">Ações</th>
       </tr>
     </thead>
-    <c:forEach var="contato" items="${contatos}">
+    <c:forEach var="contato" items="${contatos}" varStatus="id">
   	  <tr bgcolor="#${id.count %2 == 0 ? 'aaee88' : 'ffffff' }">
   	    <td>${contato.nome}</td>
   	    <td>

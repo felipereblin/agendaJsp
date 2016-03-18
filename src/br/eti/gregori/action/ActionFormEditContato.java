@@ -10,10 +10,17 @@ public class ActionFormEditContato implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		long id = Long.parseLong(request.getParameter("id"));
 		
-		ContatoDao dao = new ContatoDao();
-		Contato contato = dao.getContato(id);
+		String strId = request.getParameter("id");
+		
+		Contato contato = new Contato();
+		
+		if (strId != null) {
+			long id = Long.parseLong(strId);
+			ContatoDao dao = new ContatoDao();
+			contato = dao.getContato(id);
+		}
+			
 		request.setAttribute("contato", contato);
 		
 		return "/WEB-INF/jsp/adiciona-contato.jsp";

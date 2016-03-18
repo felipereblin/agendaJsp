@@ -4,10 +4,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
-	public static Action getAction(HttpServletRequest request) 
+	public static Action getAction(HttpServletRequest request, String defaultAction) 
 			throws ServletException {
 		
-		String parameter = request.getParameter("action");
+		String parameter = request.getParameter("action") != null ? request.getParameter("action") : defaultAction;
 		String className = "br.eti.gregori.action." + parameter;
 		
 		try {

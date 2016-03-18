@@ -36,7 +36,7 @@ public class ActionCreateEditContato implements Action {
 		ContatoDao dao = new ContatoDao();
 		
 		
-		if (request.getParameter("id") != null) {
+		if (request.getParameter("id") != "") {
 			Long id = Long.parseLong(request.getParameter("id"));
 			contato.setId(id);
 			dao.altera(contato);
