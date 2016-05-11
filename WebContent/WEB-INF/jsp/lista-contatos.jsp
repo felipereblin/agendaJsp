@@ -23,7 +23,7 @@
     </thead>
     <c:forEach var="contato" items="${contatos}">
   	  <tr bgcolor="#${id.count %2 == 0 ? 'aaee88' : 'ffffff' }">
-  	    <td>${contato.nome}</td>
+  	    <td>${contato.nome} / ${mContatos[contato.id].nome}</td>
   	    <td>
   	      <c:choose>
 			<c:when test="${not empty contato.email}">

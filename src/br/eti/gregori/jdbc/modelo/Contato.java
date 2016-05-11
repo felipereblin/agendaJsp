@@ -2,11 +2,23 @@ package br.eti.gregori.jdbc.modelo;
 
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class Contato {
+	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String nome;
 	private String email;
 	private String endereco;
+	
+	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 	
 	public Long getId() {
